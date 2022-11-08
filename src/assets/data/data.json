@@ -1,0 +1,74 @@
+{
+  "reminderItems": [
+    {
+      "reminderType": "Medicine",
+      "reminderName": "Crocin",
+      "reminderDose": "1 tab",
+      "nextReminderDateTime": "2022-11-06T11:30:00.000Z",
+      "reminderFrequency": "3",
+      "reminderDuration": "4",
+      "reminderDescription": "Check for fever before consumption",
+      "reminderStatus": "active",
+      "id": 5
+    },
+    {
+      "reminderType": "Appointment",
+      "reminderName": "Coffsil",
+      "reminderDose": "2 tab",
+      "nextReminderDateTime": "2022-11-06T11:00:00.000Z",
+      "reminderFrequency": "2",
+      "reminderDuration": "3",
+      "reminderDescription": "For irritation",
+      "reminderStatus": "active",
+      "id": 6
+    },
+    {
+      "reminderType": "",
+      "reminderName": "Krishna",
+      "reminderDose": "3 hours",
+      "nextReminderDateTime": "2022-11-06T23:44:00.000Z",
+      "reminderFrequency": "5",
+      "reminderDuration": "2",
+      "reminderDescription": "remind him to work",
+      "reminderStatus": "active",
+      "id": 7
+    },
+    {
+      "reminderType": "Appointment",
+      "reminderName": "Krishna",
+      "reminderDose": "3 hours",
+      "nextReminderDateTime": "2022-11-06T23:44:00.000Z",
+      "reminderFrequency": "5",
+      "reminderDuration": "2",
+      "reminderDescription": "remind him to work",
+      "reminderStatus": "active",
+      "id": 8
+    }
+  ],
+  "inventoryItems": [
+    {
+      "inventoryName": "Recofast",
+      "inventoryQuantity": "45 tab",
+      "inventoryExpiryDate": "2023-11-07T06:29:06.000Z",
+      "inventoryDescription": "Store in cool dry",
+      "inventoryStatus": "active",
+      "id": 1
+    },
+    {
+      "name": "Crocin",
+      "quantity": "30 tabs",
+      "expiryDate": "2022-11-17T18:30:00.000Z",
+      "description": "Only order on necessity",
+      "status": "active",
+      "id": 5
+    },
+    {
+      "inventoryName": "Crocin",
+      "inventoryQuantity": "30 tabs",
+      "inventoryExpiryDate": "2022-11-16T18:30:00.000Z",
+      "inventoryDescription": "Add only when required",
+      "inventoryStatus": "active",
+      "id": 7
+    }
+  ]
+}
