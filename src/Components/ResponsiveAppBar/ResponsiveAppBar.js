@@ -18,7 +18,7 @@ import { Link } from "react-router-dom";
 import LandingPage from '../../Pages/LandingPage/LandingPage';
 import HomePage from '../../Pages/HomePage/HomePage';
 
-const pages = [{'id': '1', 'name': 'Reminders', 'link': '/home'}, {'id': '2', 'name': 'Inventory', 'link': '/home/inventory'}, {'id': '3', 'name': 'Appointments', 'link': '/home/appointments'}];
+const pages = [{'id': '1', 'name': 'Reminders', 'link': '/home'}, {'id': '2', 'name': 'Inventory', 'link': '/home/inventory'}, {'id': '3', 'name': 'Appointments', 'link': '/home/appointments'}, {'id': '4', 'name': 'Pharmacies', 'link': '/home/pharmacies'}];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar(props) {
