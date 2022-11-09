@@ -15,6 +15,8 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import {format} from 'date-fns'
+import { Link } from "react-router-dom";
+
 
 const AddInventoryPage = (props) => {
   const [inventoryExpiryDate, setInventoryExpiryDate] = React.useState("");
@@ -44,9 +46,12 @@ const AddInventoryPage = (props) => {
   return (
     <>
       <MiniDrawer>
-        <Typography variant="h5" color="primary" padding={1.5}>
-          Enter new inventory details
-        </Typography>
+      <Stack direction="row" justifyContent="space-between" >
+          <Typography variant="h5" color="primary">
+            New Inventory
+          </Typography>
+          <Link to="/home/orderMedicines"><Button variant="contained"  color="secondary">Order Online</Button></Link>
+          </Stack>
         <form onSubmit={handleSubmit}>
           <Box minWidth={2}>
             <TextField
@@ -102,7 +107,7 @@ const AddInventoryPage = (props) => {
               </IconButton> */}
             </Stack>
           </Box>
-          <Stack direction="row" wialignItems="center" spacing={2}>
+          <Stack direction="row" wialignitems="center" spacing={2}>
             <Button
               type="submit"
               variant="contained"

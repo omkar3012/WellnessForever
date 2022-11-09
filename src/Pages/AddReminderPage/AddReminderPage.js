@@ -18,16 +18,19 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import dayjs from "dayjs";
 import { addDays, addHours, differenceInDays } from "date-fns";
+import { faArrowUpFromGroundWater } from "@fortawesome/free-solid-svg-icons";
 
 const AddReminderPage = (props) => {
   const [reminderType, setReminderType] = React.useState("");
   const [reminderName, setReminderName] = React.useState("");
   const [reminderDose, setReminderDose] = React.useState("");
-  const [nextReminderDateTime, setNextReminderDateTime] = React.useState("");
+  const [currReminderDateTime, setCurrReminderDateTime] = React.useState("");
+  // const [reminderDateTime, setReminderDateTime] = React.useState("");
   const [reminderFrequency, setReminderFrequency] = React.useState("");
   const [reminderDuration, setReminderDuration] = React.useState("");
   const [reminderDescription, setReminderDescription] = React.useState("");
   const [reminderStatus, setReminderStatus] = React.useState("active");
+  var reminderDateTime = "";
 
   const handleTypeChange = (event) => {
     setReminderType(event.target.value);
@@ -39,7 +42,7 @@ const AddReminderPage = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    reminderDateTime = currReminderDateTime;
     //TODO: Validate
     fetch("http://localhost:8000/reminderItems", {
       method: "POST",
@@ -48,62 +51,68 @@ const AddReminderPage = (props) => {
         reminderType,
         reminderName,
         reminderDose,
-        nextReminderDateTime,
+        reminderDateTime,
         reminderFrequency,
         reminderDuration,
         reminderDescription,
         reminderStatus,
       }),
     });
+    updater();
+  };
 
+  const updater = () => {
     var dayCounter = 0;
-    var currentDate = nextReminderDateTime;
-    var currentTime = nextReminderDateTime;  
+    var startDate = currReminderDateTime;
+    var currentTime = currReminderDateTime;
     // currentDate = addDays(currentDate, 1);
-    if (reminderType == "Medicine"){
-      while (dayCounter < reminderDuration){
-        if (reminderFrequency == 5){
-          currentTime = addHours(currentTime, 4) 
+    if (reminderType === "Medicine") {
+      while (dayCounter <= reminderDuration) {
+        if (reminderFrequency === "5") {
+          currentTime = addHours(new Date(currentTime), 4);
+          console.log(currentTime);
         }
-        if (reminderFrequency == 3){
-          currentTime = addHours(currentTime, 8)
+        if (reminderFrequency === "3") {
+          currentTime = addHours(new Date(currentTime), 8);
+          console.log(currentTime);
         }
-        if (reminderFrequency == 2){
-          currentTime = addHours(currentTime, 12)
+        if (reminderFrequency === "2") {
+          currentTime = addHours(new Date(currentTime), 12);
+          console.log(currentTime);
         }
-        if (reminderFrequency == 1){
-          currentTime = addHours(currentTime, 24)
+        if (reminderFrequency === "1") {
+          currentTime = addHours(new Date(currentTime), 24);
+          console.log(currentTime);
         }
+        reminderDateTime = currentTime;
         fetch("http://localhost:8000/reminderItems", {
-        method: "POST",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify({
-          reminderType,
-          reminderName,
-          reminderDose,
-          currentTime,
-          reminderFrequency,
-          reminderDuration,
-          reminderDescription,
-          reminderStatus,
-        }),
-      });
-        dayCounter = differenceInDays(nextReminderDateTime, currentTime)
+          method: "POST",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify({
+            reminderType,
+            reminderName,
+            reminderDose,
+            reminderDateTime,
+            reminderFrequency,
+            reminderDuration,
+            reminderDescription,
+            reminderStatus,
+          }),
+        });
+        dayCounter = differenceInDays(
+          new Date(currentTime),
+          new Date(startDate)
+        )
+        console.log(dayCounter);
       }
     }
-    
-    
-    
-
-
-  
   };
 
   const handleReset = (event) => {
     setReminderType("");
     setReminderName("");
     setReminderDose("");
-    setNextReminderDateTime("");
+    setCurrReminderDateTime("");
     setReminderFrequency("");
     setReminderDuration("");
     setReminderDescription("");
@@ -152,9 +161,9 @@ const AddReminderPage = (props) => {
               <DateTimePicker
                 renderInput={(props) => <TextField {...props} />}
                 label="Start Date"
-                value={nextReminderDateTime}
+                value={currReminderDateTime}
                 onChange={(e) => {
-                  setNextReminderDateTime(e);
+                  setCurrReminderDateTime(e);
                 }}
               />
             </LocalizationProvider>

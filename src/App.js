@@ -10,6 +10,7 @@ import InventoryPage from './Pages/InventoryPage/InventoryPage';
 import RemindersPage from './Pages/RemindersPage/RemindersPage';
 import AddReminderPage from './Pages/AddReminderPage/AddReminderPage';
 import AddInventoryPage from './Pages/AddInventoryPage/AddInventoryPage';
+import OrderMedicinesPage from './Pages/OrderMedicinesPage/OrderMedicinesPage';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
       <Route path="/home/addReminders" element={<AddReminderPage/>} />
       <Route path="/home/inventory" element={<InventoryPage/>} />
       <Route path="/home/addInventory" element={<AddInventoryPage/>} />
+      <Route path="/home/orderMedicines" element={<OrderMedicinesPage/>} />
     </Routes>
   );
 }

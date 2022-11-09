@@ -46,10 +46,10 @@ const InventorySection = (props) => {
   return (
     <Grid paddingTop={2} container direction="row" flexGrow={1} spacing={3}>
       {inventory.map(
-        (item) =>
+        (item, index) =>
           item.inventoryStatus == "active" && (
-            <Grid item md={2.5}>
-              <Paper>
+            <Grid item id={index * 200} md={2.5}>
+              <Paper id={index * 200 + 1} >
                 <InventoryCard
                   id={item.id}
                   inventoryName={item.inventoryName}
